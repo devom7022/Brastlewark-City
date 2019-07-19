@@ -1,0 +1,53 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="toolbar_theme" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="layout_translucent_bottom">
+        <item name="android:background">@color/colorPrimaryTranslucent</item>
+        <item name="android:padding">@dimen/dimen_padding_card</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+
+    <style name="text_title_section" parent="TextAppearance.AppCompat">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:paddingStart">@dimen/dimen_att_detail</item>
+        <item name="android:paddingEnd">@dimen/dimen_att_detail</item>
+        <item name="android:paddingTop">@dimen/dimen_att_detail</item>
+        <item name="android:paddingBottom">@dimen/dimen_att_detail_bottom</item>
+    </style>
+
+    <style name="text_title_detail" parent="TextAppearance.AppCompat.Title.Inverse">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+
+    <style name="text_atribute_detail" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:paddingStart">@dimen/dimen_att_detail</item>
+        <item name="android:paddingEnd">@dimen/dimen_att_detail</item>
+        <item name="android:paddingTop">@dimen/dimen_att_detail</item>
+        <item name="android:paddingBottom">@dimen/dimen_att_detail_bottom</item>
+    </style>
+
+    <style name="text_value_detail" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:paddingStart">@dimen/dimen_att_detail</item>
+        <item name="android:paddingEnd">@dimen/dimen_att_detail</item>
+        <item name="android:paddingTop">@dimen/dimen_att_detail_bottom</item>
+        <item name="android:paddingBottom">@dimen/dimen_att_detail</item>
+        <item name="android:textColor">@color/colorSecondaryText</item>
+    </style>
+</resources>

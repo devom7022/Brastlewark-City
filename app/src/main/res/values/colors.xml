@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=B2EBF2&secondary.color=E57373-->
+<resources>
+    <color name="colorPrimary">#b2ebf2</color>
+    <color name="colorPrimaryLight">#e5ffff</color>
+    <color name="colorPrimaryDark">#81b9bf</color>
+
+    <color name="colorAccent">#e57373</color>
+    <color name="colorSecondaryLight">#ffa4a2</color>
+    <color name="colorSecondaryDark">#af4448</color>
+
+    <color name="colorPrimaryText">#000000</color>
+    <color name="colorSecondaryText">#757575</color>
+
+    <color name="colorPrimaryTranslucent">#9981B9BF</color>
+</resources>

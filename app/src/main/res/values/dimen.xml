@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_padding_card">2dp</dimen>
+
+    <dimen name="dimen_att_detail">12dp</dimen>
+    <dimen name="dimen_att_detail_bottom">2dp</dimen>
+
+    <dimen name="dimen_val_detail_start">12dp</dimen>
+    <dimen name="dimen_val_detail_bottom">2dp</dimen>
+</resources>

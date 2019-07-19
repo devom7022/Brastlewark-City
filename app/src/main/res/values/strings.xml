@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Brastlewark City</string>
+    <string name="msj_exit_app">Presione otra vez si desea salir</string>
+    <string name="information_profile">Información básica</string>
+    <string name="information_professions">Profesiones</string>
+    <string name="information_friends">Amigos</string>
+    <string name="text_searchable">Buscar</string>
+    <string name="info_label">Infromación</string>
+</resources>
