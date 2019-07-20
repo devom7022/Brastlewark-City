@@ -40,7 +40,7 @@ public class CitizenAdapter extends RecyclerView.Adapter<CitizenViewHolder> {
         holder.bind(localItem, getSide());
 
         holder.itemView.setOnClickListener(v -> {
-            view.setItemOnClick(localItem);
+            view.setItemOnClick(localItem,holder.getIvThumbnail());
         });
 
     }
@@ -66,16 +66,3 @@ public class CitizenAdapter extends RecyclerView.Adapter<CitizenViewHolder> {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

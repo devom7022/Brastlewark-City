@@ -42,4 +42,9 @@ public class CitizenViewHolder extends RecyclerView.ViewHolder {
         paramsName.height = side / 3;
 
     }
+
+    public ImageView getIvThumbnail() {
+        return ivThumbnail;
+    }
+
 }

@@ -29,6 +29,9 @@ public class CitizensPresenter implements CitizensInteractor.OnFinishedListener 
     }
 
     void setNameToFilter(String queryName) {
+        if (view != null) {
+            view.showProgress();
+        }
         interactor.filtetForName(queryName, this);
     }
 

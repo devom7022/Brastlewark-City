@@ -17,7 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
         <activity
+            android:name=".ui.information.InformationActivity"
+            android:parentActivityName=".ui.citizens.CitizensActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ui.detail.DetailActivity"
+            android:parentActivityName=".ui.citizens.CitizensActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.citizens.CitizensActivity"

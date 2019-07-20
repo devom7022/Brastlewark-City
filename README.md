@@ -16,7 +16,8 @@ Data simulation of a fictional city called Brastlewark
 
 ### Libraries
 
->Dagger 2. Injection of dependencies used in
+>Dagger 2. 
+- Injection of dependencies
 - Only context instance of App 
 - Only retrofit instance
 - Adapter for main list

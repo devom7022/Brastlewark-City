@@ -13,4 +13,5 @@
     <color name="colorSecondaryText">#757575</color>
 
     <color name="colorPrimaryTranslucent">#9981B9BF</color>
+    <color name="colorBackground">#E6EEEE</color>
 </resources>

@@ -38,16 +38,3 @@ public class SimpleItemAdapter extends RecyclerView.Adapter<SimpleItemViewHolder
         return null != items ? items.size() : 0;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

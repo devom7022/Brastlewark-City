@@ -46,6 +46,7 @@ public class CitizensInteractor {
             listener.onSuccess(filteredCitizen);
         } else {
             listener.onFailure("No hay ningún ciudadano con ese nombre");
+            listener.onSuccess(dataResponse.getBrastlewark());
         }
     }
 

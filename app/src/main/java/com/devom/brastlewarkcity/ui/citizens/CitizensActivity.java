@@ -9,13 +9,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.SearchView.OnQueryTextListener;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +29,7 @@ import com.devom.brastlewarkcity.adapters.CitizenAdapterView;
 import com.devom.brastlewarkcity.app.BaseApplication;
 import com.devom.brastlewarkcity.model.Citizen;
 import com.devom.brastlewarkcity.ui.detail.DetailActivity;
+import com.devom.brastlewarkcity.ui.information.InformationActivity;
 import com.devom.brastlewarkcity.utils.Constants;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -33,8 +38,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class CitizensActivity extends AppCompatActivity implements CitizensView, CitizenAdapterView {
-    private ProgressBar progressBar;
 
+    private ProgressBar progressBar;
     private static long back_pressed;
     private static final long SECONDS_LAPSE = 2000;
     private View v;
@@ -50,16 +55,16 @@ public class CitizensActivity extends AppCompatActivity implements CitizensView,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_citizens);
 
-        setupDagger();
+        ((BaseApplication) getApplication()).plusPresenterSubComponent().inject(this);
 
         v = findViewById(android.R.id.content);
+
+        progressBar = findViewById(R.id.pb_progress);
 
         Toolbar toolbar = findViewById(R.id.tb_toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
-
-        progressBar = findViewById(R.id.pb_progress);
 
         Display display = getWindowManager().getDefaultDisplay();//SizeScreen, obtenemos las medidas del dispositivo para asignar la altura
         Point sizeScreen = new Point();
@@ -67,6 +72,7 @@ public class CitizensActivity extends AppCompatActivity implements CitizensView,
 
         adapter.setView(this, sizeScreen.x, 3);//Funge como presenter ya que ahí mismo se encuentra su funcionamiento
         GridLayoutManager layoutManager = new GridLayoutManager(this, 3);//new GridLayoutManager(getContext(), 3);//Setup de layout
+
         RecyclerView rvCity = findViewById(R.id.rv_city);
         rvCity.setAdapter(adapter);
         rvCity.setLayoutManager(layoutManager);
@@ -74,10 +80,6 @@ public class CitizensActivity extends AppCompatActivity implements CitizensView,
         presenter.setView(this);
         presenter.getCityData();
 
-    }
-
-    private void setupDagger() {
-        ((BaseApplication) getApplication()).plusPresenterSubComponent().inject(this);
     }
 
     @Override
@@ -98,14 +100,19 @@ public class CitizensActivity extends AppCompatActivity implements CitizensView,
 
     @Override
     public void onFailure(String error) {
-        Snackbar.make(v, error, Snackbar.LENGTH_SHORT).show();
+        Snackbar snackbar = Snackbar.make(v, error, Snackbar.LENGTH_SHORT);
+        View snackView = snackbar.getView();
+        TextView textView = snackView.findViewById(com.google.android.material.R.id.snackbar_text);
+        textView.setTextColor(getResources().getColor(R.color.colorSecondaryLight));
+        snackbar.show();
     }
 
     @Override
-    public void setItemOnClick(Citizen citizen) {
+    public void setItemOnClick(Citizen citizen, ImageView ivThumbnail) {
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(Constants.PARAM_ITEM, citizen);
-        startActivity(intent);
+        ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this, ivThumbnail, ViewCompat.getTransitionName(ivThumbnail));
+        startActivity(intent, optionsCompat.toBundle());
     }
 
     @Override
@@ -129,6 +136,7 @@ public class CitizensActivity extends AppCompatActivity implements CitizensView,
         inflater.inflate(R.menu.menu_action_search, menu);
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
+
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         searchView.setOnQueryTextListener(new OnQueryTextListener() {
@@ -140,6 +148,7 @@ public class CitizensActivity extends AppCompatActivity implements CitizensView,
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                presenter.setNameToFilter(newText);
                 return false;
             }
         });
@@ -154,7 +163,8 @@ public class CitizensActivity extends AppCompatActivity implements CitizensView,
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_info) {//startActivity(new Intent(this, InformationActivity.class));
+        if (item.getItemId() == R.id.action_info) {
+            startActivity(new Intent(this, InformationActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);
